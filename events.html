@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<h2>Quality = {{ counter }}</h2>
+		<button @click="addQuality($event)">Add</button>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		
+		new Vue({
+			el: "#app",
+			data: {
+				counter: 0,
+			},
+			methods: {
+				addQuality: function(event) {
+					this.counter++;
+					event.target.style.background = "green"
+				}
+			}
+		});
+
+	</script>
+</body>
+</html>
+
+<!-- ярлыки для директив :href = v-bind:href -->
+
+<input type="text" v-on:input="changeName">
+
+<!-- ярлыки для директив @click = v-on:click -->
+
+<button @click="addQuality($event)">Add</button>
+
+<!-- $event - зарезервированное слово, аналог this in native JS -->
+
+<!-- событие submit больше не будет перезагружать страницу -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- событие submit больше не будет перезагружать страницу -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- собітие отработает только один раз -->
+<button v-on:click.once="test">Add</button>

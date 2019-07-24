@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<input type="text" v-model.lazy="inputValue">	
+		<h2>{{ inputValue }}</h2>	
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		
+		new Vue({
+			el: "#app",
+			data: {
+				inputValue: "test string",
+			}
+		});
+
+	</script>
+</body>
+</html>
+
+<!-- 
+
+v-model - связывает елементы 
+v-model.lazy - изменяет связуемій елемент только после убирания фокуса с поля инпута
+
+ -->

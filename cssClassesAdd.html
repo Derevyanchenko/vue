@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<style>
+		.container {
+			width: 100px;
+			height: 100px;
+			margin: 50px;
+			border: 1px solid grey;
+		}
+
+		.red {
+			background: red;
+		}
+
+		.green {
+			background: green;
+		}
+
+	</style>
+
+	<div id="app">
+		
+		<div 
+			class="container" 
+			@click="isActive = !isActive"
+			:class="{'red': isActive, 'green': !isActive}"
+			></div>
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+	
+	new Vue({
+		el: "#app",
+		data: {
+			isActive: false,
+		}
+	});
+
+
+	</script>
+</body>
+</html>

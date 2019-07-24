@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<h1>
+		<a v-bind:href="url" id="link">{{ name }}</a>
+	</h1>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		
+		new Vue({
+			el: "#link",
+			data: {
+				name: "google",
+				url: "http://google.com",
+			} 
+		});
+
+	</script>
+</body>
+</html>
