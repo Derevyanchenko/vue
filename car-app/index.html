@@ -27,13 +27,16 @@
 				<div class="col-md-4">
 					<div class="form-group">
 						<label for="search">Find your car</label>
-						<input type="text" class="form-control" id="search">
+						<input type="text" class="form-control" id="search" v-model="search">
+						{{search}}
 					</div>
 
 					<hr>
 					
-					<ul class="list-group" v-for="(car, index) of cars">
-						<li class="list-group-item list-group-item-action pointer" 
+					<ul class="list-group">
+						<li 
+							v-for="(car, index) of filteredCars"
+							class="list-group-item list-group-item-action pointer" 
 							@click="selectCar(index)"
 							:class="{'active' : selectedCarIndex === index}"
 						> {{ car.name }} - {{ car.model }} </li>
@@ -56,7 +59,7 @@
 
 							<p v-if="showPhone">{{ car.number }}</p>
 							
-							<button class="btn btn-outline-success mr-3" @click="showPhone = !showPhone">Show phone</button>
+							<button class="btn btn-outline-success mr-3" @click="showPhone = !showPhone">{{ phoneBtnText }}</button>
 							<button class="btn btn-primary">Buy</button>
 						</div>
 					</div>
@@ -103,12 +106,26 @@
 				cars: cars,
 				car: cars[0],
 				selectedCarIndex: 0,
-				showPhone: false
+				showPhone: false,
+				search: ""
 			},
 			methods: {
 				selectCar: function(index) {
 					this.car = cars[index]
 					this.selectedCarIndex = index
+				}
+			},
+			computed: {
+				phoneBtnText() {
+					return this.showPhone ? "hide phone" : "show phone"
+				},
+				filteredCars() {
+					var self = this
+					const filtered = this.cars.filter(function(car) {
+						return car.name.indexOf(self.search) > -1
+					})
+
+					return filtered
 				}
 			}
 

@@ -1,0 +1,7 @@
+
+https://github.com/vuejs/vue-cli/tree/master
+
+1. npm install -g vue-cli
+2. vue init webpack-simple my-project
+
+npm run dev
