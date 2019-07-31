@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+
+	<!-- 1.Для регистрации комопнента в папке /src создаем Car.vue -->
+	<!-- Car.vue: -->
+
+	<template>
+	    <div>
+	        <h1>brand: {{ carName }}</h1>
+	        <p>year: {{ carYear }}</p>
+	    </div>
+	</template>
+
+	<script>
+
+	export default {
+	    data() {
+	        return {
+	            carName: "bmv",
+	            carYear: 2016
+	        }
+	    }    
+	}
+
+	</script>
+
+	<!-- 2. В main.js регистрируем компонент: -->
+
+	import Car from './Car'
+
+	Vue.component('app-car', Car)
+
+	<!-- 3. now we can call the component, for example in App.vue  -->
+
+	<app-car></app-car> 
+
+	<!-- profit -->
+
+	<!-- ////////////////////////////////////////// -->
+
+	<!-- Передача параметров в компонент -->
+
+	<!-- Car.vue: -->
+
+	<script>
+
+	export default {
+	    data() {
+	        return {
+	            // carName: "bmv",
+	            // carYear: 2016
+	        }
+	    },
+	    props: ['carName', 'carYear'], 
+	}
+
+	</script>
+
+	<!-- App.vue: -->
+
+	<template>
+  
+	<div>
+
+	  <app-car 
+	    :carName="carName"
+	    :carYear="carYear"
+	  >
+	  </app-car> 
+	</div>
+
+	</template>
+
+
+	<!-- ////////////////////////////////////////// -->
+
+	<!-- Изолированные стили -->
+
+	<!-- в компоненте просто добавляем "scoped" in style -->
+
+	<style scoped>
+		h1 {
+			color: red;
+		}
+	</style>
+
+	
+</body>
+</html>
