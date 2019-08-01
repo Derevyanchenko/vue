@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		<input type="text" placeholder="search.." v-model="searchName">
+		<ul>
+			<li v-for="car in filteredNames">{{ car }}</li>
+		</ul>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		
+		new Vue({
+			el: '#app',
+			data: {
+				searchName: '',
+				cars: ['ford', 'aud', 'bmw', 'porsche']
+			},
+			computed: {
+				filteredNames() {
+					return this.cars.filter(car => {
+						return car.indexOf(this.searchName) !== -1
+					})
+				}
+			}
+		});
+
+	</script>
+</body>
+</html>
