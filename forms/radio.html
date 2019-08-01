@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		
+		<label>
+			<input type="radio" value="instagram" v-model="radioVal">instagram
+		</label>
+
+		<label>
+			<input type="radio" value="vk" v-model="radioVal">vk
+		</label>
+
+		<label>
+			<input type="radio" value="facebook" v-model="radioVal">facebook
+		</label>
+
+		<hr>
+
+		<h1>{{ radioVal }}</h1>
+
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		
+		new Vue({
+			el: "#app",
+			data: {
+				radioVal: 'facebook'
+			}
+		})
+
+
+	</script>
+</body>
+</html>

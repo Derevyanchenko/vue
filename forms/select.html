@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		
+		<select v-model="selectedVal">
+			<option v-for="social in socials">{{ social }}</option>
+		</select>
+
+		<hr>
+
+		<h1>{{ selectedVal }}</h1>
+
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		
+		new Vue({
+			el: "#app",
+			data: {
+				socials: ["vk", "inst", "fb"],
+				selectedVal: "vk"
+			}
+		})
+
+
+	</script>
+</body>
+</html>

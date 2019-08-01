@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="app">
+		
+		<label>
+			<input type="checkbox" value="instagram" v-model='socials'>instagram
+		</label>
+
+		<label>
+			<input type="checkbox" value="vk" v-model='socials'>vk
+		</label>
+
+		<label>
+			<input type="checkbox" value="facebook" v-model='socials'>facebook
+		</label>
+
+		<hr>
+
+		<ul>
+			<li v-for="social in socials">{{ social }}</li>
+		</ul>
+
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		
+		new Vue({
+			el: "#app",
+			data: {
+				socials: [],
+			}
+		})
+
+
+	</script>
+</body>
+</html>
