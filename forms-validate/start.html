@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+	<div id="app">
+		
+		<!-- npm install vuelidate --save -->
+
+		<div class="container">
+			<form action="#" class="pt-4" @submit.prevent="onSubmit">
+
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input 
+						type="email" 
+						id="email" 
+						class="form-control"
+            			:class="{'is-invalid': $v.email.$error}"
+						@input="$v.email.$touch()"
+						v-model="email"
+					>
+          <div class="invalid-feedback" v-if="!$v.email.error">
+            this field id required.
+          </div>
+				</div>
+
+        <div class="form-group">
+					<label for="password">Password</label>
+					<input 
+						type="password" 
+						id="password" 
+						class="form-control"
+            			:class="{'is-invalid': $v.password.$error}"
+						@input="$v.password.$touch()"
+						v-model="password"
+					>
+          <div class="invalid-feedback" v-if="!$v.password.minLength">
+            Min length of password is 6.
+          </div>
+				</div>
+
+        <div class="form-group">
+					<label for="confirm">Confirm password</label>
+					<input 
+						type="password" 
+						id="confirm" 
+						class="form-control"
+            			:class="{'is-invalid': $v.confirmPassword.$error}"
+						@input="$v.confirmPassword.$touch()"
+						v-model="confirmPassword"
+					>
+          <div class="invalid-feedback" v-if="!$v.confirmPassword.sameAs">
+            Password should be match.
+          </div>
+				</div>
+
+        <button 
+          class="btn btn-success" 
+          type="submit"
+          :disabled="$v.$invalid"
+          >submit</button>
+
+			</form>
+		</div>
+
+
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+
+		// code in index.js (main js file)
+
+		import Vuelidate from 'vuelidate'
+		
+		Vue.use(Vuelidate)
+
+		// code in component
+
+		import { required, email } from 'vuelidate/lib/validators'
+
+		new Vue({
+			el: "#app",
+			data: {
+				email: '',
+				password: '',
+				confirmPassword: '',
+			},
+			methods: {
+				onSubmit() {
+				let emailString    = 'email: ' + this.email + '\n',
+					passwordString = 'password: ' + this.password + '\n',
+					result         = emailString + passwordString;
+
+				alert(result);
+				}
+			},
+			validations: {
+				email: {
+				required,
+				email
+				},
+				password: {
+				required,
+				minLength: minLength(6)
+				},
+				confirmPassword: {
+				sameAs: sameAs('password')
+				}
+			},
+
+		})
+
+	</script>
+</body>
+</html>
